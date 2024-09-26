@@ -1,0 +1,67 @@
+/* static/css/styles.css */
+
+/* Estilos generales del body */
+body {
+    font-family: Arial, sans-serif; /* Fuente utilizada */
+    margin: 0; /* Elimina el margen por defecto */
+    padding: 0; /* Elimina el relleno por defecto */
+    background-color: #f4f4f4; /* Color de fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Altura del viewport */
+}
+
+/* Contenedor principal del formulario */
+.container {
+    width: 100%;
+    max-width: 400px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: 20px; /* Espaciado interno */
+    background: #fff; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo de los encabezados */
+h2 {
+    color: #333; /* Color del texto */
+    margin-bottom: 20px; /* Espaciado inferior */
+    text-align: center; /* Centra el texto */
+}
+
+/* Estilo de los formularios */
+form {
+    display: flex;
+    flex-direction: column; /* Disposición en columna */
+}
+
+/* Estilo de los campos de formulario */
+form input {
+    margin-bottom: 15px; /* Espaciado inferior */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Estilo de los botones */
+button {
+    background-color: #007bff; /* Color de fondo del botón */
+    color: #fff; /* Color del texto */
+    border: none; /* Elimina el borde */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de mano */
+    font-size: 16px; /* Tamaño de la fuente */
+}
+
+/* Estilo del botón al pasar el ratón por encima */
+button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el ratón */
+}
+
+/* Estilo de los mensajes de error */
+.error-message {
+    color: #ff0000; /* Color del texto de error */
+    margin-bottom: 15px; /* Espaciado inferior */
+}
