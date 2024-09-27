@@ -1,0 +1,15 @@
+{
+"argv": [
+    "C:\\Users\\MELGRAPH01\\.venv\\Scripts\\python.exe",
+    "-Xfrozen_modules=off",
+    "-m",
+    "ipykernel_launcher",
+    "-f",
+    "{connection_file}"
+],
+"display_name": "Python 3 (.venv) - Practica 1",
+"language": "python",
+"metadata": {
+    "debugger": true
+}
+}
