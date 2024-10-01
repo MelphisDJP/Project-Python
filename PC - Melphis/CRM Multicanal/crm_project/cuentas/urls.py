@@ -14,8 +14,8 @@ from .views import (
 
 urlpatterns = [
     re_path(r'^$', RedirectView.as_view(url='/login/', permanent=False), name='login_redirect'),
-    # path('login/', CustomLoginView.as_view(), name='login'),
-    # path('logout/', CustomLogoutView.as_view(), name='logout'),
+    path('login/', CustomLoginView.as_view(), name='login'),
+    path('logout/', CustomLogoutView.as_view(), name='logout'),
     path('home/', HomeView.as_view(), name='home'),
     path('notification/', NotificationView.as_view(), name='notification'),
     path('recent_activities/', RecentActivitiesView.as_view(), name='recent_activities'),
