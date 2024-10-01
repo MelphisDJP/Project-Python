@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRM Multicanal</title>
-    <link rel="stylesheet" href="{% static 'styles.css' %}"> <!-- Si tienes CSS, ajusta la ruta -->
+    {% load static %}  <!-- Carga el módulo de etiquetas estáticas -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}"> <!-- Ajusta la ruta si es necesario -->
 </head>
 <body>
     <header>
