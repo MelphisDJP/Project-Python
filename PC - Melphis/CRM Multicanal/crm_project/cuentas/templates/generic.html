@@ -4,28 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRM Multicanal</title>
-    {% load static %}  <!-- Carga el módulo de etiquetas estáticas -->
+    {% load static %}
     <link rel="stylesheet" href="{% static 'styles.css' %}"> <!-- Ajusta la ruta si es necesario -->
 </head>
 <body>
     <header>
         <h1>Bienvenido al CRM Multicanal</h1>
-        <nav>
-            <a href="{% url 'home' %}">Inicio</a>
-            <a href="{% url 'notification' %}">Notificaciones</a>
-            <a href="{% url 'recent_activities' %}">Actividades Recientes</a>
-            <a href="{% url 'contacts' %}">Contactos</a>
-            <a href="{% url 'messages' %}">Mensajes</a>
-            <a href="{% url 'calendar' %}">Calendario</a>
-            <a href="{% url 'settings' %}">Ajustes</a>
-            <a href="{% url 'logout' %}">Cerrar sesión</a>
-        </nav>
     </header>
     
     <main>
         <h2>Página de prueba</h2>
         <p>Este es un contenido genérico de prueba para todas las vistas.</p>
-        <p>Modifica este contenido según sea necesario para cada sección.</p>
     </main>
 
     <footer>
