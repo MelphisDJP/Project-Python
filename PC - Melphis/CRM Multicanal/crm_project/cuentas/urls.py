@@ -1,6 +1,16 @@
 from django.urls import path, re_path
 from django.views.generic.base import RedirectView
-from .views import CustomLoginView, CustomLogoutView, HomeView, NotificationView, RecentActivitiesView, ContactsView, MessagesView, CalendarView, SettingsView
+from .views import (
+    CustomLoginView,
+    CustomLogoutView,
+    HomeView,
+    NotificationView,
+    RecentActivitiesView,
+    ContactsView,
+    MessagesView,
+    CalendarView,
+    SettingsView,
+)
 
 urlpatterns = [
     re_path(r'^$', RedirectView.as_view(url='/login/', permanent=False), name='login_redirect'),
