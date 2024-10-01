@@ -11,3 +11,12 @@ class CustomLogoutView(LogoutView):
 
 def home(request):
     return render(request, 'home.html')
+
+def notification_view(request):
+    return render(request, 'notification.html')  # Asegúrate de que tengas una plantilla para esto
+
+def recent_activities_view(request):
+    return render(request, 'recent_activities.html')  # Asegúrate de que tengas una plantilla para esto
+
+def contacts_view(request):
+    return render(request, 'contacts.html')
