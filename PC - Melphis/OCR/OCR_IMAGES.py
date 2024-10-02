@@ -3,7 +3,7 @@ from PIL import ImageGrab
 import numpy as np
 
 # Configura la ruta de tesseract en tu sistema si es necesario
-# pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'  # Descomenta y ajusta la ruta
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'  # Descomenta y ajusta la ruta
 
 # Función principal para realizar OCR en la imagen del portapapeles
 def ocr_from_clipboard():
