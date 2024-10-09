@@ -3,84 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body{
+        body {
             font-family: 'Montserrat', sans-serif;
-            font-size: 14px;
-            color: #E52521;
             margin: 0;
-            padding: 0;            
+            padding: 0;
         }
         .container {
-            padding: 25px;
+            width: 100%;
+            max-width: 600px;
+            position: relative;
         }
-        .logo img {
-            width: 200px;
-            padding-left: 20px;
-            margin-bottom: 30px;
+        .logo {
+            width: 150px;
+            margin-bottom: 10px;
+        }
+        .info {
+            margin-left: 0;
         }
         .nombre {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: bold;  
-            text-transform: uppercase;  
-            font-size: 26px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 24px;
             margin: 0;
+            color: #E52521;
         }
         .puesto {
             font-size: 14px;
             color: #575756;
-            margin: 5px;
+            text-transform: uppercase;
+            margin: 5px 0 0 0;
+        }
+        .contact-info {
+            position: absolute;
+            top: 55px;
+            left: 250px;
             text-transform: uppercase;
         }
-        .redes_sociales {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: lighter;  
-            text-transform: uppercase;
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
             color: #575756;
             font-size: 14px;
-            line-height: 19pt;
-            padding-left: 10px;
-            margin-left: 330px;
-            margin-top: -120px;
-            text-align: left;            
         }
-        .separador {
-            position: relative;
-            top: -350px;
-            padding-left: 260px;            
-            height: 200px;
-        }
-        .footer {
-            position: relative;
-            top: -165px;
-            left: -30px;           
-            height: 100px;
+        .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">
-            <img src="Recursos de la firma Grupo Paterson/Recurso-02.png" alt="Logo">
-        </div>
-        <div class="info" style="display: flex; flex-direction: column; align-items: flex-start;">
-            <p class="nombre">Carolina Rojas</p>
-            <p class="puesto">Gerente administrativa</p>
-        </div>               
-        <div class="redes_sociales">
-            <p>809-902-2056<br>
-            Tel: 809-279-1476<br>
-            admin@grupopatersonsrl.com<br>
-            Calle P No. 8 Zona Industrial,<br>
-            Haina, San Cristobal</p>
-
-            <div class="footer">
-                <img src="Recursos de la firma Grupo Paterson/Recurso-03.png" alt="redes_sociales">
-            </div>
-        </div>
-        <div class="separador">
-            <img src="Recursos de la firma Grupo Paterson/Recurso-04.png" alt="separador">
-        </div>
+    <table class="container">
+        <tr>
+            <td style="padding: 20px;">
+                <img class="logo" src="https://i.ibb.co/kgcpQFG/Recurso-02.png" alt="Logo">
+                <div class="info">
+                    <p class="nombre">Carolina Rojas</p>
+                    <p class="puesto">Gerente administrativa</p>
+                </div>
+                <div class="contact-info">
+                    <p class="contact-item">
+                        <img class="icon" src="https://i.ibb.co/dWRfPJv/Iconos-02.png" alt="WhatsApp">
+                        809-902-2056
+                    </p>
+                    <p class="contact-item">
+                        <img class="icon" src="https://i.ibb.co/Tr59F1Q/Iconos-05.png" alt="Phone">
+                        Tel: 809-279-1476
+                    </p>
+                    <p class="contact-item">
+                        <img class="icon" src="https://i.ibb.co/1fSfpFs/Iconos-03.png" alt="Email">
+                        admin@grupopatersonsrl.com
+                    </p>
+                    <p class="contact-item">
+                        <img class="icon" src="https://i.ibb.co/YX5yY2b/Iconos-04.png" alt="Location">
+                        Calle P No. 8 Zona Industrial,<br>Haina, San Cristobal
+                    </p>
+                </div>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
