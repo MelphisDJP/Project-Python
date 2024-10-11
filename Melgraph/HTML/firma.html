@@ -18,9 +18,10 @@
         .logo {
             width: 150px;
             margin-bottom: 10px;
-        }
+        }        
         .info {
             margin-bottom: 10px;
+            margin-left: 0;
         }
         .nombre {
             font-weight: bold;
@@ -38,12 +39,16 @@
         .contact-info {
             margin-top: 15px;
         }
-        .contact-item {
+        .contact-item {            
             display: flex;
             align-items: center;
             margin: 10px 0;
             color: #575756;
             font-size: 14px;
+        }
+        .contact-item img{
+            width: auto;
+            height: 5.5vh;
         }
         .icon {
             width: 20px;
@@ -55,7 +60,7 @@
 <body>
     <table class="container">
         <tr>
-            <td>
+            <td style="padding: 20px;">
                 <img class="logo" src="https://i.ibb.co/kgcpQFG/Recurso-02.png" alt="Logo">
                 <div class="info">
                     <p class="nombre">Carolina Rojas</p>
@@ -63,9 +68,7 @@
                 </div>
                 <div class="contact-info">
                     <p class="contact-item">
-                        <a href="https://wa.me/18099022056?text=Hola%20Grupo%20Paterson">
-                            <img class="icon" src="https://i.ibb.co/dWRfPJv/Iconos-02.png" alt="WhatsApp">
-                        </a>
+                        <img class="icon" src="https://i.ibb.co/dWRfPJv/Iconos-02.png" alt="WhatsApp">
                         809-902-2056
                     </p>
                     <p class="contact-item">
@@ -77,9 +80,7 @@
                         admin@grupopatersonsrl.com
                     </p>
                     <p class="contact-item">
-                        <a href="https://maps.app.goo.gl/KR9TSbzCY7U7KmSAA">
-                            <img class="icon" src="https://i.ibb.co/YX5yY2b/Iconos-04.png" alt="Location">
-                        </a>
+                        <img class="icon" src="https://i.ibb.co/YX5yY2b/Iconos-04.png" alt="Location">
                         Calle P No. 8 Zona Industrial,<br>Haina, San Cristobal
                     </p>
                 </div>
