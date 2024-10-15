@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Multicanal</title>
-    {% load static %}
+    <link rel="stylesheet" href="styles.css"> <!-- Vincula tu archivo CSS aquí -->
     <style>
-        body{
+        body {
             background-color: #EBE7E7;
             display: flex;
-            
             align-items: center;
             height: 100vh;
             margin: 0;
@@ -17,20 +16,20 @@
 
         .container {
             display: flex;
-            align-items: center; /* Alinea verticalmente */
-            gap: 30px;          /* Espacio de 30px entre los elementos */
-            margin: 10px;       /* Espaciado alrededor del contenedor */
+            align-items: center;
+            gap: 30px;
+            margin: 10px;
         }
 
         .icon_rectangle {
             width: 4.4vw;
             height: 90vh;
             background-color: #D9D9D9;
-            border-radius: 90px;                       
-            margin-left: 20px; /* Margen a la izquierda para separar del borde */
+            border-radius: 90px;
+            margin-left: 20px;
         }
 
-        .icons{
+        .icons {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -38,13 +37,13 @@
             gap: 20px;
         }
 
-        .icons img{
-            width: 45px; /* Establece un ancho fijo */
-            height: 45px; /* Establece una altura fija */
+        .icons img {
+            width: 45px;
+            height: 45px;
             object-fit: cover;
         }
 
-        .search_container{
+        .search_container {
             width: 30vw;           
             height: 90vh;         
             background-color: #D9D9D9;
@@ -66,7 +65,7 @@
             align-items: center;
         }
 
-        .search_svg img{
+        .search_svg img {
             width: 25px;
             height: 25px;
             object-fit: cover;
@@ -84,74 +83,110 @@
         }
 
         .separate_rectangle {
-            width: 1vw; /* Usa unidades relativas para el ancho */
-            height: 70vh; /* Altura relativa al viewport */
-            border-radius: 60px; /* Sigue manteniendo el borde redondeado */
+            width: 1vw;
+            height: 70vh;
+            border-radius: 60px;
             background-color: #848484;
             border: none;
             position: absolute;
             margin-left: 355px;
-            top: 50%; /* Mantiene la posición vertical relativa al contenedor */
-            
-            transform: translate(-50%, -50%); /* Asegura que esté perfectamente centrado */
-        }        
+            top: 50%; 
+            transform: translate(-50%, -50%);
+        }
         
+        .contacto_icon {
+            width: 50px;
+            padding-left: 25px;
+        }
+        
+        .message_list {
+            margin-top: 20px; 
+            padding: 10px; 
+            width: 100%; 
+            height: 60vh; 
+            overflow-y: auto; 
+            border-radius: 10px; 
+            padding-left: 10px; 
+            padding-right: 10px;
+        }
+
+        .message_item {
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 20px; 
+            background-color: #ffffff00; 
+            border-radius: 5px;
+        }
+
+        .message_details {
+            margin-left: 15px;
+        }
+
+        .message_details div {
+            color: #707070;
+        }
+
+        .message_details .from {
+            font-size: 18px; 
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="icon_rectangle">
             <div class="icons">
-                <!-- Icon Home -->
-                <a href="{% url 'home' %}"> <!-- Cambia 'home' por la ruta correspondiente -->
-                    <img src="https://i.ibb.co/3pyd9WR/Inicio-Icon.png" alt="Inicio-Icon" border="0">
+                <a href="/">
+                    <img src="https://i.ibb.co/3pyd9WR/Inicio-Icon.png" alt="Inicio">
                 </a>
-
-                <!-- Icon Notification -->
-                <a href="{% url 'notification' %}">
-                    <img src="https://i.ibb.co/b17wcr6/Notificacion-Icon.png" alt="Notificacion-Icon" border="0">
-                </a>                
-
-                <!-- Icon Tareas realizadas -->
-                <a href="{% url 'recent_activities' %}"> <!-- Cambia 'recent_activities' por la ruta correspondiente -->
-                    <img src="https://i.ibb.co/0rqt889/Actividades-Recientes-Icon.png" alt="Actividades-Recientes-Icon" border="0">
+                <a href="#">
+                    <img src="https://i.ibb.co/b17wcr6/Notificacion-Icon.png" alt="Notificaciones">
                 </a>
-
-                <!-- Icon Contact -->
-                <a href="{% url 'contacts' %}"> <!-- Cambia 'contacts' por la ruta correspondiente -->
-                    <img src="https://i.ibb.co/PMGpvSh/Contactos-Icon.png" alt="Contactos-Icon" border="0">
+                <a href="#">
+                    <img src="https://i.ibb.co/0rqt889/Actividades-Recientes-Icon.png" alt="Actividades Recientes">
                 </a>
-
-                <!-- Icon Mensaje -->
-                <a href="{% url 'messages' %}"> <!-- Cambia 'messages' por la ruta correspondiente -->
-                    <img src="https://i.ibb.co/HX0WYt7/Mensajes-Icon.png" alt="Mensajes-Icon" border="0">
+                <a href="#">
+                    <img src="https://i.ibb.co/PMGpvSh/Contactos-Icon.png" alt="Contactos">
                 </a>
-
-                <!-- División de íconos CRM -->
+                <a href="#">
+                    <img src="https://i.ibb.co/HX0WYt7/Mensajes-Icon.png" alt="Mensajes">
+                </a>
                 <div style="width: 70%; height: 8px; border-radius: 90px; background: linear-gradient(to top, rgba(255, 255, 255, 0) 45%, rgb(194, 194, 194) 90%);"></div>
-
-                <!-- Icono Calendario -->
-                <a href="{% url 'calendar' %}"> <!-- Cambia 'calendar' por la ruta correspondiente -->
-                    <img src="https://i.ibb.co/MP5KJ1C/Calendario-Icon.png" alt="Calendario-Icon" border="0">
+                <a href="#">
+                    <img src="https://i.ibb.co/MP5KJ1C/Calendario-Icon.png" alt="Calendario">
                 </a>
-
-                <!-- Icon Ajuste -->
-                <a href="{% url 'settings' %}"> <!-- Cambia 'settings' por la ruta correspondiente -->
-                    <img src="https://i.ibb.co/fq0wxtJ/Ajustes-Icon.png" alt="Ajustes-Icon" border="0">
+                <a href="#">
+                    <img src="https://i.ibb.co/fq0wxtJ/Ajustes-Icon.png" alt="Ajustes">
                 </a>
-                
             </div>    
         </div>
 
-        <div class="search_container">
-            <div class="search_svg">
-                <img src="https://i.ibb.co/82xm09s/Lupa-Icon.png" alt="Lupa-Icon" border="0">
+        <div class="search_container">            
+            <div class="search_svg">                
+                <img src="https://i.ibb.co/82xm09s/Lupa-Icon.png" alt="Buscar">                
                 <div class="triangle_down"></div>
+                <input type="text" placeholder="Buscar..." style="border: none; background: none; outline: none; margin-left: 10px; width: 100%; font-size: 16px;">
                 <div class="separate_rectangle"></div>                
             </div>
-
+            <div class="message_list">
+                <!-- Aquí se mostrarán los contactos -->
+                {% if unique_messages %}
+                    {% for message in unique_messages %}
+                    <div class="message_item" style="display: flex; align-items: center; margin-bottom: 20px; background-color: #ffffff00; border-radius: 5px;">
+                        ...
+                        <div style="margin-left: 15px;">
+                            <div style="font-size: 18px; font-weight: bold; color: #707070;">{{ message.from }}</div>
+                            <div style="color: #707070;">{{ message.body }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div>No hay mensajes para mostrar.</div>
+                {% endif %}
+            </div>                                                  
         </div>
-    </div>
-    
+    </div>    
 </body>
 </html>
+
+<!-- Link de Instagram: https://i.ibb.co/6m9hYHn/Logo-Instagram.png-->
