@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico 3D de Pastel</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        #container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 900px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        #canvas-container {
+            width: 100%;
+            height: 500px;
+            position: relative;
+        }
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: transform 0.2s;
+        }
+        .legend-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .legend-color {
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .legend-text {
+            font-weight: 600;
+            color: #333;
+        }
+        .legend-percent {
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Distribución de Mercado</h1>
+        <p class="subtitle">Total: 10,787,145 usuarios</p>
+        <div id="canvas-container"></div>
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #dc3545;"></div>
+                <div>
+                    <div class="legend-text">Claro</div>
+                    <div class="legend-percent">62.77% (6,771,851)</div>
+                </div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #28a745;"></div>
+                <div>
+                    <div class="legend-text">Viva</div>
+                    <div class="legend-percent">3.54% (382,211)</div>
+                </div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #1a1a1a;"></div>
+                <div>
+                    <div class="legend-text">Altice</div>
+                    <div class="legend-percent">33.68% (3,633,083)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        const data = [
+            { name: 'Claro', value: 62.77, color: 0xdc3545, users: '6,771,851' },
+            { name: 'Viva', value: 3.54, color: 0x28a745, users: '382,211' },
+            { name: 'Altice', value: 33.68, color: 0x1a1a1a, users: '3,633,083' }
+        ];
+
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xffffff);
+
+        const camera = new THREE.PerspectiveCamera(
+            50,
+            container.clientWidth / container.clientHeight,
+            0.1,
+            1000
+        );
+        camera.position.set(0, 5, 12);
+        camera.lookAt(0, 0, 0);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.shadowMap.enabled = true;
+        container.appendChild(renderer.domElement);
+
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight.position.set(5, 10, 7);
+        directionalLight.castShadow = true;
+        scene.add(directionalLight);
+
+        const pointLight = new THREE.PointLight(0xffffff, 0.4);
+        pointLight.position.set(-5, 5, 5);
+        scene.add(pointLight);
+
+        const pieGroup = new THREE.Group();
+        scene.add(pieGroup);
+
+        const radius = 4;
+        const height = 1.5;
+        let currentAngle = 0;
+
+        data.forEach((segment, index) => {
+            const angle = (segment.value / 100) * Math.PI * 2;
+            const geometry = new THREE.CylinderGeometry(
+                radius,
+                radius,
+                height,
+                32,
+                1,
+                false,
+                currentAngle,
+                angle
+            );
+
+            const material = new THREE.MeshPhongMaterial({
+                color: segment.color,
+                shininess: 80,
+                specular: 0x444444
+            });
+
+            const slice = new THREE.Mesh(geometry, material);
+            slice.castShadow = true;
+            slice.receiveShadow = true;
+
+            const midAngle = currentAngle + angle / 2;
+            const offsetDistance = index === 0 ? 0.3 : 0.15;
+            slice.position.x = Math.sin(midAngle) * offsetDistance;
+            slice.position.z = Math.cos(midAngle) * offsetDistance;
+
+            pieGroup.add(slice);
+
+            const edgeGeometry = new THREE.EdgesGeometry(geometry);
+            const edgeMaterial = new THREE.LineBasicMaterial({ 
+                color: 0xffffff, 
+                linewidth: 2,
+                opacity: 0.3,
+                transparent: true
+            });
+            const edges = new THREE.LineSegments(edgeGeometry, edgeMaterial);
+            slice.add(edges);
+
+            currentAngle += angle;
+        });
+
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            pieGroup.rotation.y += 0.005;
+            
+            camera.position.x += (mouseX * 2 - camera.position.x) * 0.05;
+            camera.position.y += (-mouseY * 2 + 5 - camera.position.y) * 0.05;
+            camera.lookAt(0, 0, 0);
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+    </script>
+</body>
+</html>
